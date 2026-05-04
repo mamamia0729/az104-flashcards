@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AZ-104 Flashcards</title>
+  <meta name="description" content="Free AZ-104 Azure Administrator flashcards — black & white, no distractions, exam-ready wording.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+/* ========================================
+   AZ-104 Flashcards — Black & White Retro
+   ======================================== */
+
+:root {
+  --bg: #ffffff;
+  --fg: #111111;
+  --muted: #666666;
+  --border: #dddddd;
+  --accent: #000000;
+  --code-bg: #f5f5f5;
+  --card-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --max-width: 720px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --fg: #eeeeee;
+    --muted: #999999;
+    --border: #333333;
+    --accent: #ffffff;
+    --code-bg: #1a1a1a;
+  }
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 17px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.7;
+  padding: 2rem 1.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- Typography ---- */
+
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 1.8rem;
+  border-bottom: 2px solid var(--fg);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+p { margin-bottom: 1rem; }
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  background: var(--code-bg);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+}
+
+a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+a:hover { text-decoration-thickness: 2px; }
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
+/* ---- Header ---- */
+
+.site-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.site-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.site-tagline {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+nav {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+nav a {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 600;
+  padding: 0.25rem 0;
+}
+
+nav a:hover, nav a.active {
+  color: var(--fg);
+}
+
+/* ---- Exam Badge ---- */
+
+.exam-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid var(--fg);
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  margin-bottom: 0.5rem;
+}
+
+/* ---- Day Selector ---- */
+
+.day-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.day-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.day-card:hover, .day-card.active {
+  border-color: var(--fg);
+}
+
+.day-card .day-number {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.day-card .day-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 0.15rem;
+}
+
+.day-card .day-meta {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+/* ---- Category Filter ---- */
+
+.category-filter {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 1.5rem 0;
+}
+
+.cat-btn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.cat-btn:hover, .cat-btn.active {
+  border-color: var(--fg);
+  color: var(--fg);
+  background: var(--code-bg);
+}
+
+/* ---- Flashcard ---- */
+
+.flashcard-area {
+  margin-top: 1.5rem;
+  perspective: 1000px;
+}
+
+.flashcard-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 220px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.flashcard-wrapper.flipped {
+  transform: rotateY(180deg);
+}
+
+.flashcard-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 220px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border: 2px solid var(--fg);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flashcard-front {
+  background: var(--bg);
+}
+
+.flashcard-back {
+  background: var(--code-bg);
+  transform: rotateY(180deg);
+}
+
+.flashcard-category {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.flashcard-question {
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.flashcard-answer {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.flashcard-answer code {
+  font-size: 0.82rem;
+}
+
+.flashcard-hint {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-top: 1rem;
+  text-align: right;
+}
+
+/* ---- Navigation ---- */
+
+.flashcard-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.flashcard-nav button {
+  background: var(--fg);
+  color: var(--bg);
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.flashcard-nav button:hover { opacity: 0.8; }
+.flashcard-nav button:disabled { opacity: 0.2; cursor: default; }
+
+.flashcard-counter {
+  color: var(--muted);
+}
+
+/* ---- Controls Row ---- */
+
+.controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+  gap: 0.5rem;
+}
+
+.shuffle-btn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.shuffle-btn:hover {
+  border-color: var(--fg);
+  color: var(--fg);
+}
+
+/* ---- Keyboard Hint ---- */
+
+.keyboard-hint {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.keyboard-hint kbd {
+  display: inline-block;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.1rem 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  margin: 0 0.1rem;
+}
+
+/* ---- Progress Bar ---- */
+
+.progress-bar-container {
+  width: 100%;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin-top: 0.75rem;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--fg);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* ---- Footer ---- */
+
+.site-footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.8;
+}
+
+/* ---- Coming Soon Banner ---- */
+
+.coming-soon {
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.coming-soon strong {
+  color: var(--fg);
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 600px) {
+  html { font-size: 16px; }
+  body { padding: 1.5rem 1rem; }
+  h1 { font-size: 1.5rem; }
+  .flashcard-face { padding: 1.2rem; min-height: 200px; }
+}
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/" class="site-title">AZ-104 Flashcards</a>
+    <p class="site-tagline">Azure Administrator exam prep — no distractions, just knowledge.</p>
+    <nav>
+      <a href="/" class="active">Flashcards</a>
+      <a href="#" style="opacity:0.4;pointer-events:none">Live Labs (coming soon)</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <span class="exam-badge">AZ-104</span>
+    <h1>Day 1: Resource Groups, VNets, Subnets, NSGs & Bastion</h1>
+    <p style="color:var(--muted);font-size:0.85rem;">20 cards covering the foundational Azure networking and governance concepts tested on AZ-104.</p>
+
+    <!-- Category filter -->
+    <div class="category-filter">
+      <button class="cat-btn active" data-cat="all">All</button>
+      <button class="cat-btn" data-cat="governance">Governance</button>
+      <button class="cat-btn" data-cat="networking">Networking</button>
+      <button class="cat-btn" data-cat="security">Security</button>
+      <button class="cat-btn" data-cat="cost">Cost Mgmt</button>
+    </div>
+
+    <!-- Flashcard area -->
+    <div class="flashcard-area">
+      <div class="flashcard-wrapper" id="flashcard" onclick="flipCard()">
+        <div class="flashcard-face flashcard-front">
+          <div class="flashcard-category" id="fc-cat"></div>
+          <div class="flashcard-question" id="fc-question"></div>
+          <div class="flashcard-hint">click or press space to flip</div>
+        </div>
+        <div class="flashcard-face flashcard-back">
+          <div class="flashcard-category" id="fc-cat-back"></div>
+          <div class="flashcard-answer" id="fc-answer"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flashcard-nav">
+      <button id="prev-btn" onclick="prevCard()" disabled>Prev</button>
+      <span class="flashcard-counter" id="fc-counter">1 / 20</span>
+      <button id="next-btn" onclick="nextCard()">Next</button>
+    </div>
+
+    <div class="progress-bar-container">
+      <div class="progress-bar-fill" id="progress-fill" style="width:5%"></div>
+    </div>
+
+    <div class="controls-row">
+      <button class="shuffle-btn" onclick="shuffleDeck()">Shuffle</button>
+      <button class="shuffle-btn" onclick="resetDeck()">Reset Order</button>
+    </div>
+
+    <div class="keyboard-hint">
+      <kbd>&larr;</kbd> prev &nbsp; <kbd>&rarr;</kbd> next &nbsp; <kbd>space</kbd> flip
+    </div>
+
+    <hr>
+
+    <div class="coming-soon">
+      <strong>Coming soon:</strong> Live Labs — spin up real Azure resources from this page and practice hands-on. More days being added weekly.
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    AZ-104 Flashcards — open source, community-driven.<br>
+    Built for anyone studying for the Azure Administrator exam.
+  </footer>
+
+<script>
+// ========================================
+// AZ-104 Flashcards — Day 1
+// Wording optimized for AZ-104 exam prep
+// ========================================
+
+const ALL_CARDS = [
+  // ---- GOVERNANCE: Resource Groups ----
+  {
+    cat: "governance",
+    q: "What is an Azure Resource Group?",
+    a: "A logical container that holds related Azure resources (VMs, VNets, disks, IPs). Every resource belongs to exactly <strong>one</strong> resource group. Deleting the RG deletes all resources inside it."
+  },
+  {
+    cat: "governance",
+    q: "Can a resource belong to more than one resource group?",
+    a: "No. A resource can only belong to <strong>one resource group at a time</strong>. You can move resources between RGs, but they cannot exist in two simultaneously."
+  },
+  {
+    cat: "governance",
+    q: "Does a resource group have a region? Does it restrict where resources can be deployed?",
+    a: "Yes, a resource group has a region — but it only stores <strong>metadata</strong> about the resources. Resources inside the RG can be deployed to <strong>any region</strong>, not just the RG's region."
+  },
+  {
+    cat: "governance",
+    q: "What is the Cloud Adoption Framework (CAF) naming convention for resource groups?",
+    a: "<code>rg-&lt;workload&gt;-&lt;environment&gt;-&lt;region&gt;</code><br>Example: <code>rg-tfg-lab-eastus</code>"
+  },
+  // ---- GOVERNANCE: Tags ----
+  {
+    cat: "governance",
+    q: "How does Azure handle tag name and value casing?",
+    a: "Tag <strong>names</strong> are case-insensitive (<code>env</code> = <code>Env</code>). Tag <strong>values</strong> are case-sensitive (<code>lab</code> &ne; <code>Lab</code>). Stay consistent — use lowercase for both."
+  },
+  {
+    cat: "governance",
+    q: "Are tags inherited by child resources from a resource group?",
+    a: "<strong>No.</strong> Tags are NOT inherited automatically. You must use Azure Policy (specifically the <code>Modify</code> effect) to enforce tag inheritance from a resource group to its child resources."
+  },
+  // ---- NETWORKING: VNet ----
+  {
+    cat: "networking",
+    q: "What is an Azure Virtual Network (VNet)?",
+    a: "An isolated private network space in Azure defined by a CIDR address range (e.g., <code>10.10.0.0/16</code>). VNets provide private IP addresses to resources, enable private communication between them, and are isolated from other Azure tenants by default."
+  },
+  {
+    cat: "networking",
+    q: "What does the CIDR notation /16 mean? How many addresses does 10.10.0.0/16 provide?",
+    a: "The first 16 bits are fixed (the network portion). This gives <strong>65,536 IP addresses</strong> — the range 10.10.0.0 through 10.10.255.255."
+  },
+  {
+    cat: "networking",
+    q: "Can two VNets communicate with each other by default?",
+    a: "<strong>No.</strong> VNets are isolated by default. To enable communication between VNets, you must configure <strong>VNet peering</strong> or use a <strong>VPN/ExpressRoute gateway</strong>."
+  },
+  // ---- NETWORKING: Subnets ----
+  {
+    cat: "networking",
+    q: "What is a subnet in Azure?",
+    a: "A subdivision of a VNet defined by a smaller CIDR range (e.g., <code>10.10.1.0/24</code>). Subnets group resources that share the same network security and routing rules. Each subnet can have its own NSG and route table."
+  },
+  {
+    cat: "networking",
+    q: "How many IP addresses does Azure reserve in every subnet, and what are they for?",
+    a: "Azure reserves <strong>5 IP addresses</strong> per subnet:<br>x.x.x.0 — network address<br>x.x.x.1 — default gateway<br>x.x.x.2, x.x.x.3 — Azure DNS<br>x.x.x.255 — broadcast<br>So a /24 has 256 - 5 = <strong>251 usable</strong> addresses."
+  },
+  {
+    cat: "networking",
+    q: "Name four Azure reserved subnet names and their purposes.",
+    a: "<code>AzureBastionSubnet</code> — Azure Bastion<br><code>GatewaySubnet</code> — VPN Gateway / ExpressRoute<br><code>AzureFirewallSubnet</code> — Azure Firewall<br><code>RouteServerSubnet</code> — Azure Route Server<br>These names are required exactly as shown."
+  },
+  {
+    cat: "networking",
+    q: "What is the minimum subnet size required for Azure Bastion?",
+    a: "<strong>/26</strong> (64 addresses). The subnet must be named exactly <code>AzureBastionSubnet</code>."
+  },
+  // ---- SECURITY: NSG ----
+  {
+    cat: "security",
+    q: "What is a Network Security Group (NSG)?",
+    a: "A virtual firewall containing a list of inbound and outbound security rules. NSGs can be associated with a <strong>subnet</strong> or a <strong>NIC</strong> (network interface). Rules filter traffic by source/destination IP, port, and protocol."
+  },
+  {
+    cat: "security",
+    q: "How are NSG rules evaluated?",
+    a: "Rules are evaluated by <strong>priority number (100–4096)</strong>, lowest number first. <strong>First match wins</strong> — once a rule matches, no further rules are evaluated. Azure adds three default rules at priority 65000+ that allow VNet-to-VNet traffic and deny all other inbound internet traffic."
+  },
+  {
+    cat: "security",
+    q: "What are the three default NSG inbound rules Azure creates automatically?",
+    a: "1. <strong>AllowVNetInBound</strong> (65000) — allows all traffic within the VNet<br>2. <strong>AllowAzureLoadBalancerInBound</strong> (65001) — allows Azure LB health probes<br>3. <strong>DenyAllInBound</strong> (65500) — denies all other inbound traffic from internet"
+  },
+  // ---- SECURITY: Bastion ----
+  {
+    cat: "security",
+    q: "What is Azure Bastion and what problem does it solve?",
+    a: "A managed PaaS jump host that provides secure RDP/SSH access to VMs through the Azure portal via <strong>HTTPS (TLS)</strong>. It eliminates the need for public IPs on VMs and removes port 3389/22 exposure to the internet — the #1 ransomware entry vector."
+  },
+  {
+    cat: "security",
+    q: "How does the connection flow work when you connect to a VM via Azure Bastion?",
+    a: "Your browser &rarr; <strong>HTTPS/TLS</strong> &rarr; Azure Bastion (public IP) &rarr; <strong>RDP/SSH over private IP</strong> &rarr; target VM. The VM only sees a connection from Bastion's private IP, never from the internet."
+  },
+  {
+    cat: "security",
+    q: "A user reports they cannot RDP to a new server from home. What is the correct approach?",
+    a: "<strong>Never</strong> open port 3389 to the internet. Route connectivity through a broker: Azure Bastion, VPN, Remote Desktop Gateway, or a jump host in a DMZ. Public RDP is the top ransomware entry vector."
+  },
+  // ---- COST MANAGEMENT ----
+  {
+    cat: "cost",
+    q: "What happens when an Azure budget alert threshold is crossed?",
+    a: "Azure sends an <strong>email notification</strong> to the configured recipients. Budgets alert only — they do <strong>NOT automatically stop or limit spending</strong>. You must investigate and take action manually (or configure action groups for automation)."
+  },
+];
+
+// ---- State ----
+let deck = [...ALL_CARDS];
+let originalDeck = [...ALL_CARDS];
+let currentIdx = 0;
+let activeCategory = 'all';
+
+// ---- DOM ----
+const fcWrapper = document.getElementById('flashcard');
+const fcCat = document.getElementById('fc-cat');
+const fcCatBack = document.getElementById('fc-cat-back');
+const fcQuestion = document.getElementById('fc-question');
+const fcAnswer = document.getElementById('fc-answer');
+const fcCounter = document.getElementById('fc-counter');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const progressFill = document.getElementById('progress-fill');
+
+function renderCard() {
+  if (deck.length === 0) {
+    fcCat.textContent = '';
+    fcCatBack.textContent = '';
+    fcQuestion.textContent = 'No cards in this category.';
+    fcAnswer.innerHTML = '';
+    fcCounter.textContent = '0 / 0';
+    prevBtn.disabled = true;
+    nextBtn.disabled = true;
+    progressFill.style.width = '0%';
+    return;
+  }
+  const card = deck[currentIdx];
+  const catLabel = card.cat.charAt(0).toUpperCase() + card.cat.slice(1);
+  fcCat.textContent = catLabel;
+  fcCatBack.textContent = catLabel;
+  fcQuestion.textContent = card.q;
+  fcAnswer.innerHTML = card.a;
+  fcCounter.textContent = `${currentIdx + 1} / ${deck.length}`;
+  prevBtn.disabled = currentIdx === 0;
+  nextBtn.disabled = currentIdx === deck.length - 1;
+  progressFill.style.width = `${((currentIdx + 1) / deck.length) * 100}%`;
+  // Reset flip
+  fcWrapper.classList.remove('flipped');
+}
+
+function flipCard() {
+  fcWrapper.classList.toggle('flipped');
+}
+
+function nextCard() {
+  if (currentIdx < deck.length - 1) {
+    currentIdx++;
+    renderCard();
+  }
+}
+
+function prevCard() {
+  if (currentIdx > 0) {
+    currentIdx--;
+    renderCard();
+  }
+}
+
+function shuffleDeck() {
+  for (let i = deck.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [deck[i], deck[j]] = [deck[j], deck[i]];
+  }
+  currentIdx = 0;
+  renderCard();
+}
+
+function resetDeck() {
+  filterDeck(activeCategory);
+}
+
+function filterDeck(cat) {
+  activeCategory = cat;
+  if (cat === 'all') {
+    deck = [...originalDeck];
+  } else {
+    deck = originalDeck.filter(c => c.cat === cat);
+  }
+  currentIdx = 0;
+  renderCard();
+
+  document.querySelectorAll('.cat-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.cat === cat);
+  });
+}
+
+// ---- Category filter clicks ----
+document.querySelectorAll('.cat-btn').forEach(btn => {
+  btn.addEventListener('click', () => filterDeck(btn.dataset.cat));
+});
+
+// ---- Keyboard shortcuts ----
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight') nextCard();
+  else if (e.key === 'ArrowLeft') prevCard();
+  else if (e.key === ' ') { e.preventDefault(); flipCard(); }
+});
+
+// ---- Touch swipe ----
+let touchStartX = 0;
+let touchEndX = 0;
+
+fcWrapper.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+fcWrapper.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  const diff = touchStartX - touchEndX;
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) nextCard();
+    else prevCard();
+  }
+});
+
+// ---- Init ----
+renderCard();
+</script>
+
+</body>
+</html>
